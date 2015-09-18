@@ -1,0 +1,31 @@
+{
+    // package name
+    "name": "tsaminaminazangalewa/jqwidgets",
+
+    // package type
+    "type": "yii2-extension",
+
+    "description": "Jqwidgets integration for the Yii framework",
+    "keywords": ["yii2", "jqwidgets", "ui"],
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/tsaminaminazangalewa/jqwidgets/issues",
+    },
+    "authors": [
+        {
+            "name": "Hadi Halim",
+            "email": "hdi_hlim@yahoo.com"
+        }
+    ],
+
+    // package dependencies
+    "require": {
+        "yiisoft/yii2": "*",
+		  "bower-asset/jquery": ">=1.11.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "yii\\jqwidgets\\": ""
+        }
+    }
+}
