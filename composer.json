@@ -21,11 +21,12 @@
     // package dependencies
     "require": {
         "yiisoft/yii2": "*",
-		  "bower-asset/jquery": ">=1.11.*"
+ 	"bower-asset/jquery": ">=1.11.*",
+ 	"npm-asset/jqwidgets-framework/jqwidgets": "*"
     },
     "autoload": {
         "psr-4": {
-            "yii\\jqwidgets\\": ""
+            "tsaminaminazangwalewa\\jqwidgets\\": ""
         }
     }
 }
