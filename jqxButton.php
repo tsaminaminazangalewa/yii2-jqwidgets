@@ -54,7 +54,10 @@ class jqxButton extends Widget
      */
     public function run()
     {
-        $this->registerPlugin('jqxButton','jqxbuttons');
+        $this->registerPlugin('jqxButton');
+        $this->registerJS('jqxbuttons');
+        $this->registerTheme();
+        
         return Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label, $this->options);
     }
 }
