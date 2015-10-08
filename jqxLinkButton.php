@@ -57,7 +57,7 @@ class jqxLinkButton extends Widget
         $this->registerPlugin('jqxButton');
         $this->registerJS('jqxbuttons');
         $this->registerTheme();
-        
+        $this->registerTooltip(); 
         return Html::a($this->text, $this->url , $this->options);
     }
 }

@@ -15,7 +15,7 @@ class jqxThemeAsset extends AssetBundle
 {
     public $sourcePath = '@npm/jqwidgets-framework/jqwidgets';
 
-    public $theme;
+    public $theme=[];
     /**
      * @inheritdoc
      */
@@ -27,7 +27,9 @@ class jqxThemeAsset extends AssetBundle
      */
     public function registerAssetFiles($view)
     {
-        $this->css[] = "styles/jqx.".$this->theme.".css";
+    		foreach($this->theme as $theme){
+        	$this->css[] = "styles/jqx.".$theme.".css";
+    		}
         parent::registerAssetFiles($view);
     }
 }

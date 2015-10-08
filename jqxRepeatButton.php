@@ -57,7 +57,7 @@ class jqxRepeatButton extends Widget
         $this->registerPlugin('jqxRepeatButton');
         $this->registerJS('jqxbuttons');
         $this->registerTheme();
-        
+        $this->registerTooltip(); 
         return Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label, $this->options);
     }
 }

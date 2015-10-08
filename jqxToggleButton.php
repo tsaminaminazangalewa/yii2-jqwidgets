@@ -57,7 +57,7 @@ class jqxToggleButton extends Widget
         $this->registerPlugin('jqxToggleButton');
         $this->registerJS('jqxbuttons');
         $this->registerTheme();
-        
+        $this->registerTooltip(); 
         return Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label, $this->options);
     }
 }

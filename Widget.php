@@ -31,6 +31,7 @@ class Widget extends \yii\base\Widget {
 	 * how to use the "Modal" plugin and the supported options (e.g. "remote").
 	 */
 	public $clientOptions = [];
+	public $tooltipOptions = false;
 	/**
 	 * @var array the event handlers for the underlying Bootstrap JS plugin.
 	 * Please refer to the corresponding Bootstrap plugin Web page for possible events.
@@ -53,8 +54,16 @@ class Widget extends \yii\base\Widget {
 	 * Registers a specific plugin and the related events
 	 * @param string $name the name of the Bootstrap plugin
 	 */
+	protected function registerTooltip() {
+		if ($this->tooltipOptions !== false) {
+			print_r($this->tooltipOptions);
+			echo '=================';
+			echo jqxTooltip::widget(['selector'=>'#'.$this->id,'clientOptions'=>$this->tooltipOptions]);
+			//$this->registerJS('jqxtooltip');
+			
+		}
+	}
 	protected function registerPlugin($name) {
-		
 		$id = $this->options['id'];
 		if ($this->clientOptions !== false) {
 			$options = empty($this->clientOptions) ? '' : Json::htmlEncode($this->clientOptions);
@@ -79,12 +88,14 @@ class Widget extends \yii\base\Widget {
 		}
 	}
 	protected function registerTheme() {
+		//print_r($this->clientOptions);
 		if (isset($this->clientOptions['theme'])) {
+			echo $this->clientOptions['theme'];
 			if($this->_themeAsset==null) {
 				$view = $this->getView();
 				$this->_themeAsset = jqxThemeAsset::register($view);
 			}
-			$this->_themeAsset->theme = $this->clientOptions['theme'];
+			$this->_themeAsset->theme[] = $this->clientOptions['theme'];
 		}
 	}
 	protected function registerJS($js) {

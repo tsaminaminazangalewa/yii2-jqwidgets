@@ -8,7 +8,8 @@
 namespace tsaminaminazangalewa\jqwidgets;
 
 use yii\helpers\Html;
-
+use yii\helpers\Json;
+use tsaminaminazangalewa\jqwidgets\assets\jqxThemeAsset;
 /**
  * Button renders a bootstrap button.
  *
@@ -24,32 +25,29 @@ use yii\helpers\Html;
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @since 2.0
  */
-class jqxSwitchButton extends Widget
+class jqxTooltip extends Widget
 {
-    /**
-     * @var string the tag to use to render the button
-     */
-    public $tagName = 'div';
-    /**
-     * Initializes the widget.
-     * If you override this method, make sure you call the parent implementation first.
-     */
+	private $_themeAsset;
+	    public $selector = '';
     public function init()
     {
         parent::init();
-        //$this->clientOptions = false;
-        //Html::addCssClass($this->options, 'btn');
-    }
-
-    /**
-     * Renders the widget.
-     */
+    }    
     public function run()
-    {
-        $this->registerPlugin('jqxSwitchButton');
-        $this->registerJS('jqxswitchbutton');
+    {	
+        $this->registerPlugin('jqxTooltip');
+        $this->registerJS('jqxtooltip');
         $this->registerTheme();
-        $this->registerTooltip(); 
-        return Html::tag($this->tagName, '', $this->options);
+        //return true;
     }
+	protected function registerPlugin($name) {
+		$id = $this->options['id'];
+		if ($this->clientOptions !== false) {
+			$options = empty($this->clientOptions) ? '' : Json::htmlEncode($this->clientOptions);
+			$js = "jQuery('".$this->selector."').$name($options);";
+			$view = $this->getView();
+			$view->registerJs($js);
+		}
+		$this->registerClientEvents();
+	}
 }
